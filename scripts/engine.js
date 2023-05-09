@@ -7,7 +7,7 @@ function getComputerChoice (){
 function playMatch(playerSelection, computerSelection ){
     if (playerSelection != null) {
         playerSelection = playerSelection.toString().toLowerCase();
-        computerSelection = computerSelection.toString().toLowerCase();;
+        computerSelection = computerSelection.toString().toLowerCase();
 
         if(playerSelection === computerSelection)
             return "TIE";

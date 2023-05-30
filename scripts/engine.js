@@ -38,7 +38,6 @@ function playGame(){
 
     while (match <= 5){
         let playerSelection = prompt("Rock Paper or Scissor?");
-        //checkInput
         let computerSelection = getComputerChoice();
         resultMatch = playMatch(playerSelection, computerSelection);
         console.log("Round "+ match);
@@ -58,6 +57,9 @@ function playGame(){
             if(scorePC === 3 && scorePlayer < 3)
                 match = 6;
         }
+        else if (resultMatch === 'TIE'){
+            console.log('Its a Tie!');
+        }
         match++;
     }
     console.log("Results!");
@@ -70,4 +72,4 @@ function playGame(){
         console.log("You lost the game!");
 }
 
-//playGame();
+playGame();

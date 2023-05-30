@@ -1,0 +1,25 @@
+.container {
+    border-radius: 25px;
+    border: 2px solid rebeccapurple;
+    padding: 20px;
+    width: 500px;
+    height: 450px;
+}
+
+.title {
+    text-align: center;
+}
+
+.imgRock {
+    margin-left: 5%;
+    float: left;
+}
+
+.imgScissor {
+    margin-right: 5%;
+    float: right;
+}
+
+.imgPaper {
+
+}

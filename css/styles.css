@@ -1,0 +1,20 @@
+.container {
+    border: 1px solid rebeccapurple;
+}
+
+.title {
+    text-align: center;
+    font-size: 50px;
+}
+
+.button {
+    align-self: center;
+}
+
+.imgRock {
+    padding-left: 60%;
+}
+
+.imgScissor {
+    padding-right: 60%;
+}

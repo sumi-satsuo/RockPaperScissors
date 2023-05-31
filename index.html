@@ -4,134 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissor</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.css" media="screen,projection"/>
 </head>
 <body>
 
-<div class="container">
-    <div class="monitor">
-        <h1 class="title">Rock Paper Scissor</h1>
-        <img class="imgRock" src="img/rock.png" alt="hand closed gesturing a rock">
-        <img class="imgPaper" src="img/paper.png" alt="hand open gesturing a paper">
-        <img class="imgScissor" src="img/scissors.png" alt="hand gesturing a scissor">
+<div class="row container card hoverable">
+    <div class="col s12">
+        <div class="monitor">
+            <h1 class="title text-light-blue text-darken-4">Rock Paper Scissor</h1>
+        </div>
+        <div class="col s12 m4 l4 left-align">
+            <img class="imgRock" src="img/rock.png" alt="hand closed gesturing a rock">
+        </div>
+        <div class="col s12 m4 l4 center-align">
+            <img class="imgPaper" src="img/paper.png" alt="hand open gesturing a paper">
+        </div>
+        <div class="col s12 m4 l4 right-align">
+            <img class="imgScissor" src="img/scissors.png" alt="hand gesturing a scissor">
+        </div>
     </div>
-    <div class="options">
-        <button class="btnRock">Rock</button>
-        <button class="btnPaper">Paper</button>
-        <button class="btnScissors">Scissors</button>
+    <div class="row"></div>
+    <div class="options center">
+        <button class="btnRock waves-effect waves-light btn-small">Rock</button>
+        <button class="btnPaper waves-effect waves-light btn-small">Paper</button>
+        <button class="btnScissors waves-effect waves-light btn-small">Scissors</button>
     </div>
-    <div class="result">
+    <div class="result center-align flow-text">
         <p class="resScore">CPU 0 | 0 Player</p>
         <p class="resMatch"> You won! </p>
     </div>
 
-    <script>
-        let scorePlayer = 0, scorePC = 0;
-        let match = 1;
-
-        const resScore = document.querySelector('.resScore');
-        resScore.textContent = "CPU 0 | 0 Player";
-
-        const resMatch = document.querySelector('.resMatch');
-        resMatch.textContent = "";
-
-        function getComputerChoice (){
-            const options = ["rock", "paper", "scissor"];
-            const random = Math.floor(Math.random()* options.length);
-            return options[random];
-        }
-        function playMatch(playerSelection, computerSelection ){
-            if (playerSelection != null) {
-                playerSelection = playerSelection.toString().toLowerCase();
-                computerSelection = computerSelection.toString().toLowerCase();
-
-                if(playerSelection === computerSelection)
-                    return "TIE";
-                else if (
-                    playerSelection === 'rock' & computerSelection === 'scissor' ||
-                    playerSelection === 'paper' & computerSelection === 'rock' ||
-                    playerSelection === 'scissor' & computerSelection === 'paper'
-                ){
-                    return "WIN"
-                }
-                else if (
-                    playerSelection === 'paper' & computerSelection === 'scissor' ||
-                    playerSelection === 'scissor' & computerSelection === 'rock' ||
-                    playerSelection === 'rock' & computerSelection === 'paper'
-                ){
-                    return "LOST"
-                }
-                else
-                    return 'Invalid input'
-            }
-        }
-
-        function saveScore(res) {
-            if (res === 'WIN'){
-                scorePlayer++;
-                resMatch.textContent = 'You won this round!';
-                //best of 3
-                if(scorePlayer === 3 && scorePC < 3)
-                    match = 6;
-            }
-            else if (res === 'LOST'){
-                scorePC++;
-                resMatch.textContent = 'You lost this round!';
-                if(scorePC === 3 && scorePlayer < 3)
-                    match = 6;
-            }
-            else if (res === 'TIE'){
-                resMatch.textContent = 'Its a Tie!';
-            }
-            updateResults();
-            match++;
-        }
-
-        function resetGame() {
-            match = 0;
-            resScore.textContent = "CPU 0 | 0 Player";
-            scorePlayer = 0
-            scorePC = 0;
-            resMatch.textContent = "";
-
-        }
-
-        function updateResults(){
-            resScore.textContent = `CPU ${scorePC} | ${scorePlayer} Player`;
-            if (match > 5 ) {
-                if (scorePlayer > scorePC)
-                    alert("You won the game!");
-                else
-                    alert("You lost the game!");
-
-                resetGame();
-            }
-        }
-
-        const btnRock = document.querySelector('.btnRock');
-        btnRock.addEventListener('click', e => {
-            let res = playMatch('rock', getComputerChoice());
-            saveScore(res);
-        });
-
-        const btnPaper = document.querySelector('.btnPaper');
-        btnPaper.addEventListener('click', e => {
-            let res = playMatch('paper', getComputerChoice());
-            saveScore(res);
-        });
-
-        const btnScissor = document.querySelector('.btnScissors');
-        btnScissor.addEventListener('click', e => {
-            let res = playMatch('scissor', getComputerChoice());
-            saveScore(res);
-        });
-
-
-
-    </script>
-
+    <script type="text/javascript" src="js/engine.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
 </div>
-
 
 </body>
 </html>
